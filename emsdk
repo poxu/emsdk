@@ -60,7 +60,7 @@ if WINDOWS:
   if build_with_visualstudio:
     CMAKE_GENERATOR = 'Visual Studio 12'
   else:
-    CMAKE_GENERATOR += 'MinGW Makefiles'
+    CMAKE_GENERATOR = 'MinGW Makefiles'
 
 # Removes a directory tree even if it was readonly, and doesn't throw exception on failure.
 def remove_tree(d):
