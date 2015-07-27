@@ -638,8 +638,12 @@ def build_optimizer_tool(tool):
   build_root = optimizer_build_root(tool)
   build_type = decide_cmake_build_type(tool)
 
+  cmake_generator = CMAKE_GENERATOR
+  if 'Visual Studio' in CMAKE_GENERATOR and tool.bitness == 64:
+    cmake_generator += ' Win64'
+
   # Configure
-  success = cmake_configure(None, build_root, src_root, build_type)
+  success = cmake_configure(cmake_generator, build_root, src_root, build_type)
   if not success: return False
 
   # Make
